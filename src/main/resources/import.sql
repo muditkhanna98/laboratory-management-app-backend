@@ -22,5 +22,5 @@ INSERT INTO test_order (patient_id, physician_id, test_id, order_datetime, statu
 INSERT INTO test_order (patient_id, physician_id, test_id, order_datetime, status) VALUES (2, 2, 2, '2023-08-16 15:00:00', 'in-progress');
 
 -- Insert data into the TestResults table
-INSERT INTO test_result (test_order_id, technician_id, result_text) VALUES (1, 3, 'Blood test result');
-INSERT INTO test_result (test_order_id, technician_id, result_text) VALUES (2, 3, 'X-ray report');
+INSERT INTO test_result (test_order_id, technician_id, result_text) VALUES (1, 3, 'The blood test was conducted to assess various aspects of the patient''s blood chemistry and cell counts.');
+INSERT INTO test_result (test_order_id, technician_id, result_text) VALUES (2, 3, 'The X-ray examination was performed on the patient''s chest area to assess the condition of the lungs and heart. No signs of abnormalities, infiltrates, or fractures are observed.');
