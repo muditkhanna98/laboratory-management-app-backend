@@ -23,6 +23,6 @@ public class Patient {
     private String lastName;
     private LocalDate dob;
     private String gender;
-    private int contactNumber;
+    private String contactNumber;
 
 }
