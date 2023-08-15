@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static org.apache.tomcat.util.http.parser.HttpParser.isNumeric;
+
 @Service
 public class PatientService {
 
     private final PatientRepository patientRepository;
-
     @Autowired
     public PatientService(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
@@ -39,7 +40,9 @@ public class PatientService {
         return patientRepository.save(existingPatient);
     }
 
-    public Optional<Patient> getPatientById(int patientId) {
-        return patientRepository.findById(patientId);
+    public Patient searchByPatientId(int patientId) {
+        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+        return patientOptional.orElse(null);
     }
+
 }
