@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,6 +36,12 @@ public class PatientController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/search/{name}")
+    public List<Patient> searchPatientsByFirstNameOrLastName(@PathVariable String name) {
+        return patientService.searchPatientsByFirstNameOrLastName(name);
+    }
+
 
     @PostMapping
     public Patient addPatient(@RequestBody Patient patient) {
