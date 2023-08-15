@@ -21,8 +21,8 @@ public class TestOrder {
     private Patient patient;
 
     @ManyToOne
-    @JoinColumn(name = "physician_id")
-    private User physician;
+    @JoinColumn(name = "medical_user_id")
+    private User medical_user;
 
     @ManyToOne
     @JoinColumn(name = "test_id")
