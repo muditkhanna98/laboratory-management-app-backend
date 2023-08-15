@@ -51,4 +51,6 @@ public class PatientService {
     public List<Patient> searchPatientsByFirstNameOrLastName(String name) {
         return patientRepository.findByFirstNameIgnoreCaseOrLastNameIgnoreCase(name, name);
     }
+
+
 }
