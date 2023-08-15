@@ -5,8 +5,8 @@ INSERT INTO medical_user (username, password, role) VALUES ('jaydenn', 'hashed_p
 INSERT INTO medical_user (username, password, role) VALUES ('viraj', 'hashed_password_viraj', 'admin');
 
 -- Insert data into the Patients table
-INSERT INTO patient (first_name, last_name, dob, gender, contact_number) VALUES ('Patient A', 'Last A', '1990-05-20', 'Female', '123-456-7890');
-INSERT INTO patient (first_name, last_name, dob, gender, contact_number) VALUES ('Patient B', 'Last B', '1985-10-15', 'Male', '987-654-3210');
+INSERT INTO patient (first_name, last_name, dob, gender, contact_number) VALUES ('John', 'Smith', '1990-05-20', 'Female', '123-456-7890');
+INSERT INTO patient (first_name, last_name, dob, gender, contact_number) VALUES ('Jane', 'William', '1985-10-15', 'Male', '987-654-3210');
 
 -- Insert data into the Appointments table
 INSERT INTO appointment (patient_id, appointment_datetime, status) VALUES (1, '2023-08-15 10:00:00', 'confirmed');
