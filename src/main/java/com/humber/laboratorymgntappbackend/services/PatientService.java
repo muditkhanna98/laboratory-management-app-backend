@@ -5,6 +5,8 @@ import com.humber.laboratorymgntappbackend.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,5 +46,11 @@ public class PatientService {
         Optional<Patient> patientOptional = patientRepository.findById(patientId);
         return patientOptional.orElse(null);
     }
+
+    // New combined method
+    public List<Patient> searchPatientsByFirstNameOrLastName(String name) {
+        return patientRepository.findByFirstNameIgnoreCaseOrLastNameIgnoreCase(name, name);
+    }
+
 
 }
