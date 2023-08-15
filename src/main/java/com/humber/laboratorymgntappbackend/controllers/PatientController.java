@@ -3,13 +3,14 @@ package com.humber.laboratorymgntappbackend.controllers;
 import com.humber.laboratorymgntappbackend.models.Patient;
 import com.humber.laboratorymgntappbackend.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
-@RequestMapping("/api/patient-info")
+@RequestMapping("/api/patient")
 public class PatientController {
 
     private final PatientService patientService;
@@ -19,24 +20,30 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/view-all")
+    @GetMapping
     public List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }
 
-    @GetMapping("/{patientId}")
-    public Optional<Patient> getPatientById(@PathVariable int patientId) {
-        return patientService.getPatientById(patientId);
+    @GetMapping("/{id}")
+    public ResponseEntity<Patient> searchByPatientId(@PathVariable int id) {
+        Patient patient = patientService.searchByPatientId(id);
+
+        if (patient != null) {
+            return ResponseEntity.ok(patient);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public Patient addPatient(@RequestBody Patient patient) {
         return patientService.addPatient(patient);
     }
 
-    @PutMapping("/update/{patientId}")
-    public Patient updatePatient(@PathVariable int patientId, @RequestBody Patient updatedPatient) {
-        return patientService.updatePatient(patientId, updatedPatient);
+    @PutMapping("/{id}")
+    public Patient updatePatient(@PathVariable int id, @RequestBody Patient updatedPatient) {
+        return patientService.updatePatient(id, updatedPatient);
     }
 
 }
