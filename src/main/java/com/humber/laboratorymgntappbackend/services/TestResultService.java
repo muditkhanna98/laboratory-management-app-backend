@@ -25,23 +25,26 @@ public class TestResultService {
     @Autowired
     TestOrderRepository testOrderRepository;
 
-    public TestResult uploadTestResult(TestResult testResult) throws AccessDeniedException {
+    public List<TestOrder> uploadTestResult(TestResult testResult) throws AccessDeniedException {
         TestOrder testOrder = testResult.getTestOrder();
         User technician = testResult.getTechnician();
 
         // Check if the TestOrder and User entities exist in the database
         testOrder = testOrderRepository.findById(testOrder.getTestOrderId())
                 .orElseThrow(() -> new EntityNotFoundException("Test Order not found"));
+        testOrder.setStatus("Completed");
+        testOrderRepository.save(testOrder);
         technician = userRepository.findByUsername(technician.getUsername())
                 .orElseThrow(() -> new EntityNotFoundException("Technician not found"));
-        if (!technician.getRole().name().equals("technician") ) throw new AccessDeniedException("Only technicians are allowed to upload test results.");
+        if (!technician.getRole().name().equals("technician"))
+            throw new AccessDeniedException("Only technicians are allowed to upload test results.");
 
         // Associate the retrieved entities with the TestResult
         testResult.setTestOrder(testOrder);
         testResult.setTechnician(technician);
 
-        return testResultRepository.save(testResult);
-
+        testResultRepository.save(testResult);
+        return this.testOrderRepository.findAll();
     }
 
     public List<TestResult> getAllTestResults() {
@@ -51,6 +54,6 @@ public class TestResultService {
     public TestResult getTestResultById(int id) {
         return testResultRepository.findById(id).orElse(null);
     }
-	
+
 
 }

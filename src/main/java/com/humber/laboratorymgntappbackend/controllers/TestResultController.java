@@ -1,5 +1,6 @@
 package com.humber.laboratorymgntappbackend.controllers;
 
+import com.humber.laboratorymgntappbackend.models.TestOrder;
 import com.humber.laboratorymgntappbackend.models.TestResult;
 import com.humber.laboratorymgntappbackend.services.TestResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class TestResultController {
     @PostMapping
     public ResponseEntity<?> uploadTestResult(@RequestBody TestResult testResult) {
         try {
-            TestResult uploadedResult = testResultService.uploadTestResult(testResult);
-            return ResponseEntity.status(HttpStatus.CREATED).body(uploadedResult);
+           List<TestOrder> allOrders = testResultService.uploadTestResult(testResult);
+            return ResponseEntity.status(HttpStatus.CREATED).body(allOrders);
         } catch (AccessDeniedException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body("Access denied: " + e.getMessage());

@@ -29,6 +29,7 @@ public class SecurityConfiguration {
 
                 .requestMatchers("/api/appointment/**").hasAnyRole("admin", "physician", "staff")
                 .requestMatchers("/api/patient/delete/**").hasAnyRole("admin", "staff")
+                .requestMatchers("/api/tests/**").hasAnyRole("technician", "physician")
                 .anyRequest()
                 .authenticated()
                 .and()

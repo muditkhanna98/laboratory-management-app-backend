@@ -28,7 +28,7 @@ INSERT INTO test (test_name) VALUES ('Biopsy');
 
 -- Insert data into the TestOrders table
 INSERT INTO test_order (patient_id, medical_user_id, test_id, order_datetime, status) VALUES (1, 1, 1, '2023-08-15 11:00:00', 'pending');
-INSERT INTO test_order (patient_id, medical_user_id, test_id, order_datetime, status) VALUES (2, 2, 2, '2023-08-16 15:00:00', 'in-progress');
+INSERT INTO test_order (patient_id, medical_user_id, test_id, order_datetime, status) VALUES (2, 2, 2, '2023-08-16 15:00:00', 'pending');
 
 -- Insert data into the TestResults table
 INSERT INTO test_result (test_order_id, technician_id, result_text) VALUES (1, 3, 'The blood test was conducted to assess various aspects of the patient''s blood chemistry and cell counts.');
