@@ -34,7 +34,7 @@ public class TestResultService {
                 .orElseThrow(() -> new EntityNotFoundException("Test Order not found"));
         technician = userRepository.findByUsername(technician.getUsername())
                 .orElseThrow(() -> new EntityNotFoundException("Technician not found"));
-        if (!technician.getRole().equals("technician") ) throw new AccessDeniedException("Only technicians are allowed to upload test results.");
+        if (!technician.getRole().name().equals("technician") ) throw new AccessDeniedException("Only technicians are allowed to upload test results.");
 
         // Associate the retrieved entities with the TestResult
         testResult.setTestOrder(testOrder);
