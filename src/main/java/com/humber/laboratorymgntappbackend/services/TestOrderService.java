@@ -34,9 +34,8 @@ public class TestOrderService {
                 .orElseThrow(() -> new EntityNotFoundException("Test not found"));
         patient = patientRepository.findById(patient.getPatientId())
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found"));
-        medicalUser = userRepository.findById(medicalUser.getUserId())
+        medicalUser = userRepository.findByUsername(medicalUser.getUsername())
                 .orElseThrow(() -> new EntityNotFoundException("Medical User not found"));
-        if (medicalUser.getRole().equals("technician") ) throw new AccessDeniedException("Technicians are not allowed to create test orders.");
 
         // Associate the retrieved entities with the TestResult
         testOrder.setTest(test);

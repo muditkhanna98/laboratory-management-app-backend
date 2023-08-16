@@ -24,7 +24,7 @@ public class AppointmentController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Appointment> searchByAppointmentId(@PathVariable int id) {
-        Appointment appointment = (Appointment) appointmentService.searchByAppointmentId(id);
+        Appointment appointment = appointmentService.searchByAppointmentId(id);
 
         if (appointment != null) {
             return ResponseEntity.ok(appointment);

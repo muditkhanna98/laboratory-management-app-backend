@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,10 +35,7 @@ public class PatientController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/search/{name}")
-    public List<Patient> searchPatientsByFirstNameOrLastName(@PathVariable String name) {
-        return patientService.searchPatientsByFirstNameOrLastName(name);
-    }
+
     @PostMapping
     public Patient addPatient(@RequestBody Patient patient) {
         return patientService.addPatient(patient);
@@ -49,4 +45,5 @@ public class PatientController {
     public Patient updatePatient(@PathVariable int id, @RequestBody Patient updatedPatient) {
         return patientService.updatePatient(id, updatedPatient);
     }
+
 }
