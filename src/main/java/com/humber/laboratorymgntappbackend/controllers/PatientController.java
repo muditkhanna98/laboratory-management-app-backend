@@ -37,7 +37,7 @@ public class PatientController {
     }
 
     @PostMapping
-    public Patient addPatient(@RequestBody Patient patient) {
+    public List<Patient> addPatient(@RequestBody Patient patient) {
         return patientService.addPatient(patient);
     }
 

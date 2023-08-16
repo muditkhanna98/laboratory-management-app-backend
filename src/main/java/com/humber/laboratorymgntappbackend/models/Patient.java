@@ -24,5 +24,6 @@ public class Patient {
     private LocalDate dob;
     private String gender;
     private String contactNumber;
+    
 
 }

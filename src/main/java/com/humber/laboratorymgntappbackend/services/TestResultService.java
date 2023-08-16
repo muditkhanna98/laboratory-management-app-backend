@@ -32,7 +32,7 @@ public class TestResultService {
         // Check if the TestOrder and User entities exist in the database
         testOrder = testOrderRepository.findById(testOrder.getTestOrderId())
                 .orElseThrow(() -> new EntityNotFoundException("Test Order not found"));
-        technician = userRepository.findById(technician.getUserId())
+        technician = userRepository.findByUsername(technician.getUsername())
                 .orElseThrow(() -> new EntityNotFoundException("Technician not found"));
         if (!technician.getRole().equals("technician") ) throw new AccessDeniedException("Only technicians are allowed to upload test results.");
 
